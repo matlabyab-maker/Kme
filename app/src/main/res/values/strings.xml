@@ -1,1 +1,11 @@
-<resources><string name="app_name">Kme</string></resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kme</string>
+    <string name="keyboard_name">Kme Keyboard</string>
+    <string name="setup_title">Kme Keyboard setup</string>
+    <string name="setup_help">To use Kme, enable it in Android keyboard settings, then select it from the keyboard picker.</string>
+    <string name="enable_keyboard">Enable Kme in settings</string>
+    <string name="choose_keyboard">Choose active keyboard</string>
+    <string name="keyboard_enabled">Kme is enabled</string>
+    <string name="keyboard_disabled">Kme is installed but not enabled yet</string>
+</resources>
