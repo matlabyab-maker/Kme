@@ -1,22 +1,18 @@
-# Kme — Android keyboard (IME)
+# Kme Android Keyboard
 
-This is a GitHub/MGit-ready Android project for the Kme keyboard.
+Kme is an Android Input Method Editor (IME) project. The keyboard view is built from touchable controls matching the keys in `app/src/main/assets/keyboard_layout.jpg`; the image is retained as the layout reference and is not displayed as a fake, non-interactive keyboard.
 
-## What was corrected
-- Kept the Android InputMethodService registration explicit in `AndroidManifest.xml`.
-- Added a small launcher/setup screen so Kme appears in the app list and provides direct buttons to Android's keyboard settings and keyboard picker.
-- Kept the keyboard service, Persian subtype metadata, supplied keyboard image, and Send action.
-- Kept the GitHub Actions workflow building with Gradle 8.9 and Android SDK 35; it does not depend on a missing Gradle wrapper or the obsolete `sdkmanager tools` package.
+## Changes in this revision
+- Removed the extra full-width `Send` button and explanatory strip previously placed beneath the keyboard.
+- No controls are added beyond the keys represented in the supplied keyboard layout.
+- Pressing a key lights that same key in a sun-yellow color briefly.
+- Persian letters, digits/punctuation, space, delete, enter, navigation arrows, clipboard actions, select, undo/redo, emoji, diacritics, File picker, and Send have handlers.
+- `Send` requests the focused editor's declared IME action; if the editor does not provide a usable action, it sends Enter. Websites that require tapping a separate HTML button may not expose that button to an Android keyboard service, so the keyboard cannot universally click a site's page button.
 
-## Build with GitHub Actions
-1. Extract this ZIP and use the contents of the `Kme` folder as the repository root.
-2. Push to `main` or `master`, or run **Android Build** manually from Actions.
-3. Download the `Kme-debug-apk` artifact from the successful workflow.
-4. Install `app-debug.apk` on the phone.
+## Build
+GitHub Actions workflow: `.github/workflows/android.yml`
 
-## Enable the keyboard
-1. Open the **Kme** app.
-2. Tap **Enable Kme in settings** and enable **Kme Keyboard**.
-3. Return to Kme and tap **Choose active keyboard** to select it.
+The workflow builds `:app:assembleDebug` and uploads `app-debug.apk` as the `Kme-debug-apk` artifact.
 
-Note: the Send key invokes the editor action offered by the focused app/site and falls back to Enter. A website's private Send button cannot be forced by a general Android keyboard unless the site supports an appropriate editor action or handles Enter. The supplied keyboard image is still a visual reference; individual image key regions are not mapped to typing yet.
+## Install and enable
+Install the APK, open Kme once if needed, then enable **Kme Keyboard** under Android Settings > System/Language & input > On-screen keyboard (the exact menu wording varies by device), and select it from the keyboard picker.
