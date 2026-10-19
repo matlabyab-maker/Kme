@@ -1,0 +1,2 @@
+Optimized supplied keyboard image: app/src/main/assets/keyboard_layout.jpg
+Size: 65170 bytes (63.6 KiB)
